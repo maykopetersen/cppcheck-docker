@@ -30,12 +30,15 @@ RUN cmake -S . -B build \
 
 FROM ${BASE_IMAGE}
 LABEL org.opencontainers.image.authors="Mayko Petersen de Freitas"
+ARG BUILD_DIR="/opt/build-dir"
+ARG WORKSPACE_DIR="/workspace"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpcre3=2:8.39-15build1 \
     python3=3.12.3-0ubuntu2.1 \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir /opt/build-dir
+    && mkdir ${BUILD_DIR} ${WORKSPACE_DIR} \
+    && chown 1000 ${BUILD_DIR} ${WORKSPACE_DIR}
 
 COPY --from=builder /src/build/bin/cppcheck /usr/bin/cppcheck
 COPY --from=builder /src/cfg /usr/share/cppcheck/cfg
@@ -44,5 +47,5 @@ COPY --from=builder /src/platforms /usr/share/cppcheck/platform
 
 USER 1000
 
-WORKDIR /workspace
+WORKDIR ${WORKSPACE_DIR}
 ENTRYPOINT ["cppcheck"]
