@@ -14,7 +14,7 @@ You can analyze your code by mounting the source-code directory into the contain
 ```sh
 docker run --rm -it \
   -v .:/workspace \
-  maykopetersen/cppcheck-docker:latest \
+  maykopetersen/cppcheck:latest \
   --output-file=cppcheck-report.xml --xml-version=2 --enable=all --force --max-configs=1 .
 ```
 
@@ -26,13 +26,13 @@ To speed up Cppcheck analysis, run something like this (it is recommended to use
 ```sh
 docker run --rm -it \
   -v .:/workspace/ \
-  maykopetersen/cppcheck-docker:latest \
+  maykopetersen/cppcheck:latest \
   --output-file=cppcheck --xml-version=2 --enable=all --force --max-configs=1 --cppcheck-build-dir=/opt/build-dir -j $(nproc) .
 ```
 
 You can see all available options by running the `--help` command:
 ```sh
-docker run --rm maykopetersen/cppcheck-docker:latest --help
+docker run --rm maykopetersen/cppcheck:latest --help
 ```
 
 You can learn more about Cppcheck by reading the [official documentation](https://cppcheck.sourceforge.io/manual.pdf).
