@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN git clone \
       --single-branch \
-      --branch 2.20.x \
+      --branch 2.21.x \
       --depth 1 \
       https://github.com/cppcheck-opensource/cppcheck.git .
 

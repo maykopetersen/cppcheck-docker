@@ -33,7 +33,7 @@ jobs:
       - name: Define image/tag
         id: vars
         run: |
-          IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/cppcheck-docker"
+          IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/cppcheck"
 
           if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
             TAG="${GITHUB_REF_NAME}"
