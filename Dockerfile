@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential=12.10ubuntu1 \
       ca-certificates=20240203 \
       cmake=3.28.3-1build7 \
-      git=1:2.43.0-1ubuntu7.3 \
+      git=1:2.43.0-1ubuntu7.4 \
       python3=3.12.3-0ubuntu2.1 \
       libpcre3-dev=2:8.39-15build1 \
       libboost-dev=1.83.0.1ubuntu2 \
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN git clone \
       --single-branch \
-      --branch 2.21.x \
+      --branch 2.22.x \
       --depth 1 \
       https://github.com/cppcheck-opensource/cppcheck.git .
 
